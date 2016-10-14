@@ -1,0 +1,56 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="../template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../menu.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<h:messages />
+
+		<p:dataTable var="user" value="#{createController.users}" rows="18"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,18">
+			<p:column headerText="Id">
+				<h:outputText value="#{user.id}" />
+			</p:column>
+
+			<p:column headerText="Username">
+				<h:outputText value="#{user.username}" />
+			</p:column>
+
+			<p:column headerText="First name">
+				<h:outputText value="#{user.firstName}" />
+			</p:column>
+
+			<p:column headerText="Last name">
+				<h:outputText value="#{user.lastName}" />
+			</p:column>
+		</p:dataTable>
+
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">Create new user</f:facet>
+
+			<h:outputLabel for="username" value="Enter username:" />
+			<p:inputText id="username" value="#{newUser.username}" />
+
+			<h:outputLabel for="firstName" value="Enter first name:" />
+			<p:inputText id="firstName" value="#{newUser.firstName}" />
+
+			<h:outputLabel for="lastName" value="Enter last name:" />
+			<p:inputText id="lastName" value="#{newUser.lastName}" />
+
+			<f:facet name="footer">
+				<h:commandButton action="#{createController.create}"
+					value="Add User" />
+			</f:facet>
+
+		</p:panelGrid>
+	</ui:define>
+</ui:composition>
+

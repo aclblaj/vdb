@@ -1,0 +1,30 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="../template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../menu.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<h:messages />
+		<p:panelGrid columns="2">
+			<f:facet name="header">Create new book</f:facet>
+
+			<h:outputLabel for="title" value="Enter title:" />
+			<p:inputText id="title" value="#{newBook.title}" />
+
+			<h:outputLabel for="publishyear" value="Enter publishing year:" />
+			<p:inputText id="publishyear" value="#{newBook.publishYear}" />
+
+			<f:facet name="footer">
+				<h:commandButton action="#{bookController.create}"
+					value="Add Book" />
+			</f:facet>
+
+		</p:panelGrid>
+	</ui:define>
+</ui:composition>
+

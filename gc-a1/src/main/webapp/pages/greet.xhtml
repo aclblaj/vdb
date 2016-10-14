@@ -1,0 +1,27 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="../template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:messages />
+		<h:panelGrid columns="3">
+			<h:outputLabel for="username">Enter username:</h:outputLabel>
+			<h:inputText id="username" value="#{greetController.username}" />
+			<h:message for="username" />
+		</h:panelGrid>
+		<h:commandButton id="greet" value="Greet!"
+			action="#{greetController.greet}" />
+		<h:outputText value="#{greetController.greeting}"
+			rendered="#{not empty greetController.greeting}" />
+		<br />
+
+	</ui:define>
+</ui:composition>
+

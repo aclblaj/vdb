@@ -1,0 +1,42 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="../template.xhtml">
+	
+	<ui:define name="menu">
+		<ui:include src="../menu.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+
+		<h2 class="first">Basic</h2>
+
+		<p:accordionPanel>
+			<p:tab title="Godfather Part I">
+				<h:outputText value="The story begins as Don Vito Corleon..." />
+			</p:tab>
+			<p:tab title="Godfather Part II">
+				<h:outputText value="Francis Ford Coppola's ..." />
+			</p:tab>
+			<p:tab title="Godfather Part III">
+				<h:outputText value="After a break of more than 15 years..." />
+			</p:tab>
+		</p:accordionPanel>
+
+		<h2>Dynamic</h2>
+		<p:accordionPanel dynamic="true" cache="true">
+			<p:tab title="Godfather Part I">
+				<h:outputText value="The story begins as Don Vito Corleon..." />
+			</p:tab>
+			<p:tab title="Godfather Part II">
+				<h:outputText value="Francis Ford Coppola's ..." />
+			</p:tab>
+			<p:tab title="Godfather Part III">
+				<h:outputText value="After a break of more than 15 years..." />
+			</p:tab>
+		</p:accordionPanel>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,32 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="../template.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="../menu.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+
+			<p:panelGrid columns="2">
+				<f:facet name="header">Anagram maker</f:facet>
+
+				<h:outputLabel for="Word" value="Word" />
+				<p:inputText id="Word" value="#{wordBean.word}" label="Word" />
+
+				<h:outputLabel for="Anagram" value="Anagram" />
+				<h:outputText id="Anagram" value="#{wordBean.anagram}" />
+				<f:facet name="footer">
+
+					<p:commandButton action="#{wordBean.generateAnagram}"
+						update="Anagram" value="Generate anagram" icon="ui-icon-check"
+						style="margin:0" />
+				</f:facet>
+
+			</p:panelGrid>
+
+	</ui:define>
+</ui:composition>
