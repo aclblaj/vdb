@@ -1,6 +1,14 @@
 # vdb
 
-This projects is a database project oriented on the JEE technologies. It uses Wildfly, PostgreSQL, JPA, CDI, Primefaces to access and present data from a database.
+The main project is a database project based on the JEE technologies. It uses Wildfly, PostgreSQL, JPA, CDI, Primefaces to access and present data from a database.
+
+There are three projects:
+
+1) gc-a0 : JPA projects for working with database (data model project)
+
+2) gc-a1 : Web project (Primefaces facelet project with CDI, Java beans, etc)
+
+3) gc-a2 : Web project for publishing RESTfull web services using also the gc-a0 data
 
 In the following are presented the steps needed to compile, deploy and test the project.
 
