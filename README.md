@@ -42,7 +42,14 @@ b) start it with no modification to check if works
 
 c) modify port when needed (in standalone.xml change the ports offset (${jboss.socket.binding.port-offset:500}) - it adds the value to all used ports)
 
-## S5) install postgresql driver and create the data source name (into wildfly): https://jdbc.postgresql.org/download.html
+## S5) install postgreSQL: https://www.postgresql.org/download/
+
+a) download, run the installation and set default password to "1q2w3e"
+
+b) create the empty database "myDB"
+
+
+## S6) install postgresql driver and create the data source name (into wildfly): https://jdbc.postgresql.org/download.html
 
 a) download the driver 
 
@@ -62,18 +69,12 @@ f) define the java data source connection by runnging:
 
 data-source add --jndi-name=java:/myDB --name=myDB --connection-url=jdbc:postgresql://localhost/myDB --driver-name=postgres --user-name=postgres --password=1q2w3e
 
-	- the database "myDB" has to be created on into the database server
+- the database "myDB" has to be created on into the database server
 
-	- the user for the connection is "postgres" and the password is "1q2w3e" (if it is the case they have to be changed to own database credentials)
+- the user for the connection is "postgres" and the password is "1q2w3e" (if it is the case they have to be changed to own database credentials)
 	
-	- the localhost can be changed to another computer name or IP that hosts a database (also the database username and password has to be modified)
+- the localhost can be changed to another computer name or IP that hosts a database (also the database username and password has to be modified)
 	
-## S6) install postgreSQL: https://www.postgresql.org/download/
-
-a) download, run the setup and set default password to "1q2w3e"
-
-b) create the empty database "vdb2016"
-
 ## S7) modify aplication connection to point to the created connection
 
 a) into the persistence.xml file change the jndi name to the new defined one
