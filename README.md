@@ -60,9 +60,13 @@ e) activate the use of postgres driver by runnging:
 
 f) define the java data source connection by runnging:
 
-data-source add --jndi-name=java:/vdb2016 --name=vdb2016 --connection-url=jdbc:postgresql://localhost/vdb2016 --driver-name=postgres --user-name=postgres --password=1q2w3e
-	- the database "vdb2016" has to be created on into the database server
-	- the user for the connection is "postgres" and the password is "1q2w3e" (have to be changed to own database credential)
+data-source add --jndi-name=java:/myDB --name=myDB --connection-url=jdbc:postgresql://localhost/myDB --driver-name=postgres --user-name=postgres --password=1q2w3e
+
+	- the database "myDB" has to be created on into the database server
+
+	- the user for the connection is "postgres" and the password is "1q2w3e" (if it is the case they have to be changed to own database credentials)
+	
+	- the localhost can be changed to another computer name or IP that hosts a database (also the database username and password has to be modified)
 	
 ## S6) install postgreSQL: https://www.postgresql.org/download/
 
