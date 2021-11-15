@@ -1,3 +1,5 @@
+# Steps to implement the delete user functionality
+
 s1) add column on interface (e.g create.xhtml)
 			<p:column headerText="Operations">
 				<h:outputText value="abc" />
