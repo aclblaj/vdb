@@ -2,6 +2,13 @@
 
 The main project is a database project based on the JEE technologies. It uses Wildfly, PostgreSQL, JPA, CDI, Primefaces to access and present data from a database.
 
+## Software versions
+Last compile date: 2021-11-15
+
+open jdk-11 | apache-maven-3.8.1 | postgresql 13 | wildfly-25.0.1.Final
+
+## Subprojects
+
 There are three projects:
 
 1) gc-a0 : JPA projects for working with database (data model project)
