@@ -1,107 +1,88 @@
 # vdb
 
-The main project is a database project based on the JEE technologies. It uses Wildfly, PostgreSQL, JPA, CDI, Primefaces to access and present data from a database.
+The main project is a database application based on Jakarta EE technologies. It uses WildFly, PostgreSQL, JPA, CDI, and PrimeFaces to access and present data from a database.
 
 ## Software versions
-Compile dates: 
-
-2021-11-15 | open jdk-11 | apache-maven-3.8.1 | postgresql 13 | driver: postgresql-42.3.1.jar  | wildfly-25.0.1.Final
+Compile date: 2025-11-04
+- OpenJDK 21
+- Apache Maven 3.8+
+- PostgreSQL 13+
+- Driver: postgresql-42.3.1.jar
+- WildFly 38.0.0.Final
+- PrimeFaces 15 (Jakarta)
 
 ## Subprojects
 
-There are three projects:
+There are four main modules:
 
-1) gc-a0 : JPA projects for working with database (data model project)
+1) gc-a0 : JPA project for working with the database (data model)
+2) gc-a1 : Web application (PrimeFaces Facelets, CDI, Java beans, etc)
+3) gc-a2 : RESTful web services (publishes REST endpoints using gc-a0 data)
+4) gc-a4 : Standalone REST client (automated POST/GET testing)
 
-2) gc-a1 : Web project (Primefaces facelet project with CDI, Java beans, etc)
+## New Features
+- Modernized to Jakarta EE and latest PrimeFaces
+- Automated deploy.cmd menu for building, deploying, and running REST clients
+- .gitignore for excluding build and dependency folders
 
-3) gc-a2 : Web project for publishing RESTfull web services using also the gc-a0 data
+## Setup Steps
 
-In the following are presented the steps needed to compile, deploy and test the project.
+### 1. Install JDK
+- Download OpenJDK 21 or later
+- Add JDK path to system PATH (optional)
 
-## S1) install JDK: http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
+### 2. Install Maven
+- Download and unpack Maven
+- Add Maven path to system PATH
+- Configure proxy if needed
 
-a) note down path to JDK 
+### 3. Compile Project
+- Run `mvn clean install` in the project root
+- Recompile after any code or configuration changes
 
-b) add the JDK path into the system path (optional)
+### 4. Install WildFly
+- Download and unpack WildFly 38+
+- Start WildFly to verify installation
+- Modify ports in standalone.xml if needed
 
-## S2) install maven: http://maven.apache.org/download.cgi
+### 5. Install PostgreSQL
+- Download and install PostgreSQL
+- Set default password (e.g., "1q2w3e")
+- Create database "myDB"
 
-a) download it and unpack it
+### 6. Install PostgreSQL Driver & Configure Data Source in WildFly
+- Download JDBC driver
+- Use jboss-cli to add module and driver
+- Example commands:
+  - `module add --name=org.postgres --resources=postgresql-42.3.1.jar --dependencies=jakarta.api,jakarta.transaction.api`
+  - `/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)`
+  - `data-source add --jndi-name=java:/myDB --name=myDB --connection-url=jdbc:postgresql://localhost/myDB --driver-name=postgres --user-name=postgres --password=1q2w3e`
 
-b) add the maven path to the system path
+### 7. Configure Application Connection
+- Edit persistence.xml to use the correct JNDI name
+- Recompile the project
 
-c) check the proxy for the maven when behind the proxy
+### 8. Deploy the Project
+- Use deploy.cmd menu for deployment:
+  - Option 1: Deploy gc-a1 (web app)
+  - Option 2: Deploy gc-a2 (RESTful app)
+  - Option 3: Deploy both
+  - Option 4: Prepare gc-a4 and run RESTClientPOST
+- Or manually copy gc-a1.war/gc-a2.war to WildFly deployments directory
 
-## S3) compile project 
+### 9. Test the Web Application
+- Access http://localhost:8080/gc-a1/
+- Use the menu to navigate (Greet, Users, Books, etc)
 
-a) mvn clean install
+### 10. Test REST Endpoints and Clients
+- Access REST endpoints via gc-a2 (e.g., /rest/message/measure/...)
+- Use gc-a4 module and deploy.cmd option 4 to run RESTClientPOST/GET
 
-b) mvn is the maven compiler which resides in the %MAVEN_HOME%\bin
+### 11. Verify Database Effects
+- Records created via the web interface should appear in the database
+- Changes in the database should be reflected in the application
 
-c) compilation has to be done after each modification in scripts
-
-## S4) install Wildfly: http://wildfly.org/downloads/
-
-a) download it and unpack it
-
-b) start it with no modification to check if works 
-
-c) modify port when needed (in standalone.xml change the ports offset (${jboss.socket.binding.port-offset:500}) - it adds the value to all used ports)
-
-## S5) install postgreSQL: https://www.postgresql.org/download/
-
-a) download, run the installation and set default password to "1q2w3e"
-
-b) create the empty database "myDB"
-
-
-## S6) install postgresql driver and create the data source name (into wildfly): https://jdbc.postgresql.org/download.html
-
-a) download the driver 
-
-b) run jboss_cli.bat from %WILDFLY_HOME%\bin
-
-c) run "connect" or "connect localhost:10490 " (if ports are changed 10490=9990+500)
-
-d) run the command (with the proper jar file):
-
-module add --name=org.postgres --resources=postgresql-9.4-1211.jdbc42.jar --dependencies=javax.api,javax.transaction.api
-
-e) activate the use of postgres driver by runnging:
-
-/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)
-
-f) define the java data source connection by runnging:
-
-data-source add --jndi-name=java:/myDB --name=myDB --connection-url=jdbc:postgresql://localhost/myDB --driver-name=postgres --user-name=postgres --password=1q2w3e
-
-- the database "myDB" has to be created on into the database server
-
-- the user for the connection is "postgres" and the password is "1q2w3e" (if it is the case they have to be changed to own database credentials)
-	
-- the localhost can be changed to another computer name or IP that hosts a database (also the database username and password has to be modified)
-	
-## S7) modify aplication connection to point to the created connection
-
-a) into the persistence.xml file change the jndi name to the new defined one
-
-b) recompile the project
-
-## S8) deploy the project 
-
-a) copy the war file (gc-a1.war) into the "deployments" directory
-
-b) check server console (or log file) to see that no errors are appearing
-
-## S9) check the web application
-
-a) access into the browser http://localhost:8080/gc-a1/ (or 8580)
-
-b) add some new records
-
-## S10) check the effects into the database
-
-a) the created records on the web interface of the application should be present into the database vdb2016
-
-b) create new records directly into the db, this has to be visible on the application web interface
+## Notes
+- All build and dependency folders (target, lib) are excluded from git via .gitignore
+- For troubleshooting, check WildFly logs and REST client output
+- For further upgrades, update dependencies in pom.xml and redeploy
