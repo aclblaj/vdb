@@ -2,14 +2,13 @@ package org.utbv.mitb.resources;
 
 import java.util.logging.Logger;
 
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.faces.context.FacesContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 public class Resources {
-
     // Expose an entity manager using the resource producer pattern
     @PersistenceContext
     @Produces
@@ -25,5 +24,4 @@ public class Resources {
     FacesContext getFacesContext() {
         return FacesContext.getCurrentInstance();
     }
-
 }

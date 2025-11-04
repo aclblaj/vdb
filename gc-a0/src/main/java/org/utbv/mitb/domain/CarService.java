@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
- 
-@ManagedBean(name = "carService")
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
+
+@Named("carService")
 @ApplicationScoped
 public class CarService {
      

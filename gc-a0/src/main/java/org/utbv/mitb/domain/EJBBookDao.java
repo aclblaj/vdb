@@ -1,18 +1,18 @@
 package org.utbv.mitb.domain;
 
-import javax.ejb.Stateless;
-import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 
 @Stateless
-@ManagedBean
+@Named
 public class EJBBookDao implements BookDao {
 
-    @Inject
+    @PersistenceContext
     private EntityManager entityManager;
 
     public Book getForTitle(String title){

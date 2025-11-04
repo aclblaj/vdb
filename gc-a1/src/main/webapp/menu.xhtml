@@ -4,31 +4,31 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<p:tabMenu activeIndex="#{param.i}">
-		<p:menuitem value="Greet" outcome="pretty:greetView"
+		<p:menuitem value="Greet" outcome="/pages/greet.xhtml"
 			icon="ui-icon-star">
 			<f:param name="i" value="0" />
 		</p:menuitem>
-		<p:menuitem value="Users" outcome="pretty:createView"
+		<p:menuitem value="Users" outcome="/pages/create.xhtml"
 			icon="ui-icon-search">
 			<f:param name="i" value="1" />
 		</p:menuitem>
-		<p:menuitem value="Books" outcome="pretty:bookView"
+		<p:menuitem value="Books" outcome="/pages/createbook.xhtml"
 			icon="ui-icon-document">
 			<f:param name="i" value="2" />
 		</p:menuitem>		
-		<p:menuitem value="Anagram" outcome="pretty:anagramView"
+		<p:menuitem value="Anagram" outcome="/pages/anagram.xhtml"
 			icon="ui-icon-document">
 			<f:param name="i" value="3" />
 		</p:menuitem>
-		<p:menuitem value="Accordion" outcome="pretty:accordionView"
+		<p:menuitem value="Accordion" outcome="/pages/accordion.xhtml"
 			icon="ui-icon-wrench">
 			<f:param name="i" value="4" />
 		</p:menuitem>
-		<p:menuitem value="Chart" outcome="pretty:chartView"
+		<p:menuitem value="Chart" outcome="/pages/cars.xhtml"
 			icon="ui-icon-person">
 			<f:param name="i" value="5" />
 		</p:menuitem>
-		<p:menuitem value="Cars" outcome="pretty:carView"
+		<p:menuitem value="Cars" outcome="/pages/cars.xhtml"
 			icon="ui-icon-person">
 			<f:param name="i" value="6" />
 		</p:menuitem>

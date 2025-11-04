@@ -1,4 +1,3 @@
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -37,13 +36,13 @@
 			<f:facet name="header">Create new user</f:facet>
 
 			<h:outputLabel for="username" value="Enter username:" />
-			<p:inputText id="username" value="#{newUser.username}" />
+			<p:inputText id="username" value="#{createController.newUser.username}" />
 
 			<h:outputLabel for="firstName" value="Enter first name:" />
-			<p:inputText id="firstName" value="#{newUser.firstName}" />
+			<p:inputText id="firstName" value="#{createController.newUser.firstName}" />
 
 			<h:outputLabel for="lastName" value="Enter last name:" />
-			<p:inputText id="lastName" value="#{newUser.lastName}" />
+			<p:inputText id="lastName" value="#{createController.newUser.lastName}" />
 
 			<f:facet name="footer">
 				<h:commandButton action="#{createController.create}"
@@ -53,4 +52,3 @@
 		</p:panelGrid>
 	</ui:define>
 </ui:composition>
-

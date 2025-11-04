@@ -4,9 +4,24 @@
   <artifactId>app-gest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.jar.plugin.version>3.4.0</maven.jar.plugin.version>
+        <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
+        <javax.xml.bind.version>2.3.1</javax.xml.bind.version>
+        <org.jboss.resteasy.version>4.0.0.Beta5</org.jboss.resteasy.version>
+        <org.jboss.resteasy.jaxb.version>3.0.13.Final</org.jboss.resteasy.jaxb.version>
+        <junit.version>4.13.2</junit.version>
+    </properties>
   <modules>
   	<module>gc-a0</module>
   	<module>gc-a1</module>
   	<module>gc-a2</module>
+    <module>gc-a4</module>
   </modules>
 </project>

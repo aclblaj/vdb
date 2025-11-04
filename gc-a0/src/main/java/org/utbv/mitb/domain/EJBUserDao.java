@@ -1,25 +1,24 @@
-
 package org.utbv.mitb.domain;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
-import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Stateless
-@ManagedBean
+@Named
 public class EJBUserDao implements UserDao {
 
 	private final static Logger logger = LoggerFactory.getLogger(EJBUserDao.class);
 
-	@Inject
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	public User getForUsername(String username) {
