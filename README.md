@@ -54,9 +54,9 @@ There are four main modules:
 - Download JDBC driver
 - Use jboss-cli to add module and driver
 - Example commands:
-  - `module add --name=org.postgres --resources=postgresql-42.3.1.jar --dependencies=jakarta.api,jakarta.transaction.api`
+  - `module add --name=org.postgres --resources=postgresql-42.7.8.jar --dependencies=javax.api,javax.transaction.api`
   - `/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)`
-  - `data-source add --jndi-name=java:/myDB --name=myDB --connection-url=jdbc:postgresql://localhost/myDB --driver-name=postgres --user-name=postgres --password=1q2w3e`
+  - `data-source add --jndi-name=java:/myDB --name=myDB --connection-url=jdbc:postgresql://192.168.22.100:5432/myDB?sslmode=disable --driver-name=postgres --user-name=postgres --password=1q2w3e`
 
 ### 7. Configure Application Connection
 - Edit persistence.xml to use the correct JNDI name
